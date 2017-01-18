@@ -17,3 +17,6 @@ Completed user stories:
 **Walkthrough of required and optional user stories:**
 
 
+![](gif/tipper_demo.gif)
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
