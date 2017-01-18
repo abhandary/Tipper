@@ -273,17 +273,25 @@
                     </navigationItem>
                     <connections>
                         <outlet property="amountTextField" destination="yDF-ih-NF5" id="Q7M-td-Fgw"/>
-                        <outlet property="bottomView" destination="9gp-iy-hSn" id="sEQ-w0-DhL"/>
+                        <outlet property="bottomView" destination="9gp-iy-hSn" id="uF2-Tg-o8E"/>
                         <outlet property="containerViewVeriticalSpaceToBottomConstraint" destination="fXv-tE-L6Y" id="y4F-M6-Hxx"/>
                         <outlet property="containerViewVerticalSpaceToTopConstraints" destination="IWp-gF-m2W" id="uaK-My-DIJ"/>
                         <outlet property="containingView" destination="I2c-4N-xCu" id="3Nm-HS-I9w"/>
+                        <outlet property="divideByFourView" destination="57L-xL-D3i" id="xwF-S8-pYz"/>
+                        <outlet property="divideByPeopleView" destination="PRB-mt-kQ3" id="lWp-I7-7Bq"/>
+                        <outlet property="divideByThreeView" destination="dSa-YN-dJC" id="awf-4y-N6v"/>
+                        <outlet property="divideByTwoView" destination="zfo-cN-C8Z" id="fhS-Zn-Gll"/>
                         <outlet property="firstDivisionAmountLabel" destination="pyH-to-o4n" id="xYE-0R-wQC"/>
                         <outlet property="secondDivisionAmountLabel" destination="LKv-iO-SLy" id="QNz-NM-yfO"/>
+                        <outlet property="segmentedControlView" destination="A5d-Io-7Tf" id="Ppr-kg-ZWx"/>
                         <outlet property="thirdDivisionAmountLabel" destination="epU-P3-ePh" id="QzA-Di-ayz"/>
                         <outlet property="tipAmountLabel" destination="KCq-Lt-6b9" id="qEz-rG-Hwr"/>
+                        <outlet property="tipAmountView" destination="Mxy-H6-wRR" id="d9K-UR-gpW"/>
                         <outlet property="tipSegmentedControl" destination="UMY-MA-4e9" id="9GO-mb-cQu"/>
                         <outlet property="topView" destination="dEm-LT-G8n" id="7bT-sf-zaJ"/>
                         <outlet property="totalAmountLabel" destination="TJ2-qx-28a" id="IjQ-Rb-3iH"/>
+                        <outlet property="totalAmountNestedView" destination="ZYO-57-1Ba" id="zwE-TL-8ht"/>
+                        <outlet property="totalAmountView" destination="hZe-fj-iKN" id="stg-H2-z5D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -307,8 +315,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Tip Percentage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sS-ST-GH6">
-                                <rect key="frame" x="10" y="84" width="176" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Tip Percentage:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sS-ST-GH6">
+                                <rect key="frame" x="10" y="84" width="180" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -325,17 +333,39 @@
                                     <action selector="tipPercentageSegmentedControlValueChanged:" destination="PcY-Jt-c3T" eventType="valueChanged" id="Nsz-Rt-Gad"/>
                                 </connections>
                             </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2b8-qQ-pHY">
+                                <rect key="frame" x="10" y="243" width="91" height="29"/>
+                                <segments>
+                                    <segment title="Dark"/>
+                                    <segment title="Light"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="themeSegmentControlValueChanged:" destination="PcY-Jt-c3T" eventType="valueChanged" id="iLf-Bv-uW1"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7y-Qy-bua">
+                                <rect key="frame" x="10" y="202" width="58" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.34901960780000002" green="0.61568627450000002" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="2b8-qQ-pHY" firstAttribute="top" secondItem="v7y-Qy-bua" secondAttribute="bottom" constant="20" id="4PJ-lb-pef"/>
+                            <constraint firstItem="v7y-Qy-bua" firstAttribute="top" secondItem="8wg-xL-1O6" secondAttribute="bottom" constant="50" id="7u2-1S-9Br"/>
+                            <constraint firstItem="v7y-Qy-bua" firstAttribute="leading" secondItem="FxN-SB-akS" secondAttribute="leading" constant="10" id="NkP-mU-OGL"/>
                             <constraint firstItem="8wg-xL-1O6" firstAttribute="leading" secondItem="FxN-SB-akS" secondAttribute="leading" constant="10" id="RP6-OQ-8Ml"/>
                             <constraint firstItem="4sS-ST-GH6" firstAttribute="leading" secondItem="FxN-SB-akS" secondAttribute="leading" constant="10" id="fPb-3l-Ehe"/>
                             <constraint firstAttribute="trailing" secondItem="8wg-xL-1O6" secondAttribute="trailing" constant="10" id="fjC-vy-KPS"/>
+                            <constraint firstItem="2b8-qQ-pHY" firstAttribute="leading" secondItem="FxN-SB-akS" secondAttribute="leading" constant="10" id="md2-4S-ecS"/>
                             <constraint firstItem="8wg-xL-1O6" firstAttribute="top" secondItem="4sS-ST-GH6" secondAttribute="bottom" constant="20" id="rCc-Ph-Pm1"/>
                             <constraint firstItem="4sS-ST-GH6" firstAttribute="top" secondItem="qtq-w8-XbQ" secondAttribute="bottom" constant="20" id="wZ2-Hk-pnc"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="themeSegmentedControl" destination="2b8-qQ-pHY" id="AJ9-PP-whp"/>
                         <outlet property="tipPercentageSegmentedControl" destination="8wg-xL-1O6" id="aNk-du-00f"/>
                     </connections>
                 </viewController>

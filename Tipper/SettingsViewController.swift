@@ -11,8 +11,11 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     
+    @IBOutlet weak var themeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var tipPercentageSegmentedControl: UISegmentedControl!
+    
     let kDefaultPercentageStringKey = "kDefaultPercentageStringKey"
+    let kThemeStringKey = "kThemeStringKey"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,9 @@ class SettingsViewController: UIViewController {
         let defaultPercentage = defaults.integer(forKey: kDefaultPercentageStringKey);
         
         self.tipPercentageSegmentedControl.selectedSegmentIndex = defaultPercentage;
+        
+        self.themeSegmentedControl.selectedSegmentIndex = defaults.integer(forKey: kThemeStringKey);
+        setupTheme();
     }
     
     @IBAction func tipPercentageSegmentedControlValueChanged(_ sender: Any) {
@@ -37,6 +43,19 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func themeSegmentControlValueChanged(_ sender: Any) {
+        let defaults = UserDefaults()
+        defaults.set(self.themeSegmentedControl.selectedSegmentIndex, forKey: kThemeStringKey);
+        setupTheme();
+    }
+    
+    func setupTheme() {
+        if (self.themeSegmentedControl.selectedSegmentIndex == 1) {
+            self.view.backgroundColor = UIColor.white;
+        } else {
+            self.view.backgroundColor = UIColor(red:0.35, green:0.62, blue:0.76, alpha:1.0);
+        }
+    }
 
     /*
     // MARK: - Navigation

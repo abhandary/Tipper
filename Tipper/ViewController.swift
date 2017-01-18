@@ -16,6 +16,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var containingView: UIView!
+    @IBOutlet weak var segmentedControlView: UIView!
+    @IBOutlet weak var divideByPeopleView: UIView!
+    @IBOutlet weak var tipAmountView: UIView!
+    @IBOutlet weak var totalAmountView: UIView!
+    @IBOutlet weak var totalAmountNestedView: UIView!
+    @IBOutlet weak var divideByTwoView: UIView!
+    @IBOutlet weak var divideByThreeView: UIView!
+    @IBOutlet weak var divideByFourView: UIView!
+    
+    
     
     // tip amount and totoal amount labels
     @IBOutlet weak var tipAmountLabel: UILabel!
@@ -36,6 +46,7 @@ class ViewController: UIViewController {
     let kDefaultPercentageStringKey = "kDefaultPercentageStringKey"
     let kBillAmountKey              = "kBillAmountKey"
     let kCurrentEpochTimeKey        = "kCurrentEpochTimeKey"
+    let kThemeStringKey             = "kThemeStringKey"
     
     var topViewOffset = true;
     
@@ -53,11 +64,49 @@ class ViewController: UIViewController {
         
         setupAmountTextField();
         
-        
+        setupTheme();
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(willResignActive),
                                                name: Notification.Name.UIApplicationWillResignActive, object: nil);
+    }
+    
+    
+    func setupTheme() {
+        let defaults = UserDefaults()
+        let theme = defaults.integer(forKey: kThemeStringKey);
+        
+        if (theme == 1) {
+            let lightColor = UIColor.white;
+            self.view.backgroundColor = lightColor
+            self.topView.backgroundColor = lightColor
+            self.bottomView.backgroundColor = lightColor
+            self.containingView.backgroundColor = lightColor
+            self.segmentedControlView.backgroundColor = lightColor
+            self.divideByPeopleView.backgroundColor = lightColor
+            self.totalAmountView.backgroundColor = lightColor
+            self.totalAmountNestedView.backgroundColor = lightColor
+            self.divideByTwoView.backgroundColor = lightColor
+            self.divideByThreeView.backgroundColor = lightColor
+            self.divideByFourView.backgroundColor = lightColor
+            self.tipAmountView.backgroundColor = lightColor;
+            
+        } else {
+            let darkColor = UIColor(red:0.35, green:0.62, blue:0.76, alpha:1.0);
+            self.view.backgroundColor = darkColor
+            self.topView.backgroundColor = darkColor
+            self.bottomView.backgroundColor = darkColor
+            self.containingView.backgroundColor = darkColor
+            self.segmentedControlView.backgroundColor = darkColor
+            self.divideByPeopleView.backgroundColor = darkColor
+            self.totalAmountView.backgroundColor = darkColor
+            self.totalAmountNestedView.backgroundColor = darkColor
+            self.divideByTwoView.backgroundColor = darkColor
+            self.divideByThreeView.backgroundColor = darkColor
+            self.divideByFourView.backgroundColor = darkColor
+            self.tipAmountView.backgroundColor = darkColor;
+
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +114,8 @@ class ViewController: UIViewController {
         let defaultPercentage = defaults.integer(forKey: kDefaultPercentageStringKey);
         
         self.tipSegmentedControl.selectedSegmentIndex = defaultPercentage;
+        
+        setupTheme();
     }
     
     func willResignActive() {
