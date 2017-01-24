@@ -123,6 +123,7 @@ class ViewController: UIViewController {
         
         defaults.set(self.billAmount, forKey: kBillAmountKey)
         defaults.set(Date().timeIntervalSince1970, forKey: kCurrentEpochTimeKey)
+        defaults.synchronize();
     }
     
     func setupAmountTextField() {
